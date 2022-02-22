@@ -1,0 +1,26 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+  <input type="text" v-on:input="alterarTitulo">
+  {{ titulo }}
+  {{ retornar() }}
+  <a v-bind:href="link">Google</a>
+</div>
+
+<script>
+  new Vue({
+    el:"#app",
+    data:{
+      titulo: "Usando o vue 2",
+      link: "http://google.com.br/"
+    },
+    methods:{
+      alterarTitulo(event){
+        this.titulo= event.target.value;
+      },
+      retornar(){
+        return 1.5
+      }
+    }
+  })
+</script>
