@@ -1,0 +1,22 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+<div id="app">
+  <p v-if="mostrar==true">{{ nome }}</p>
+  <button @click="mostrarNome">Clica</button>
+</div>
+
+<script>
+  new Vue({
+    el:"#app",
+    data:{
+      nome: "Henrique",
+      mostrar: false
+      
+    },
+    methods:{
+      mostrarNome(){
+        this.mostrar = !this.mostrar;
+      }
+    }
+  })
+</script>
