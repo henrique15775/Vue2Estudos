@@ -3,6 +3,11 @@
 <div id="app">
   <p v-if="mostrar==true">{{ nome }}</p>
   <button @click="mostrarNome">Clica</button>
+
+  <ul v-for="(obj,index) in lista">
+      <li>{{ obj.name }} - {{ index+1 }}</li>
+  </ul>
+
 </div>
 
 <script>
@@ -10,8 +15,12 @@
     el:"#app",
     data:{
       nome: "Henrique",
-      mostrar: false
-      
+      mostrar: false,
+      lista: [{
+        name:'L1'
+      },{
+        name:'L2'
+      }]
     },
     methods:{
       mostrarNome(){
