@@ -1,0 +1,39 @@
+<script src="https://unpkg.com/vue@2"></script>
+
+
+<div id="app">
+    {{ nome }}
+</div>
+
+<script>
+    function MeuVue(params){
+        this.$el = document.querySelector(params.el)
+        this.$data = params.data
+        for(let atr in this.$data){
+            Object.defineProperty(
+                this,
+                atr,
+                {
+                    get:()=> { return this.$data[atr] },
+                    set: val => {
+                        this.$data[atr] = value
+                    }
+                }
+            )
+        }
+        const regex = /\{\{([\s\w+]*)\}\}/g
+        this.$el.innerHTML = this.$el.innerHTML.replace(regex, (match,s1) => {
+            const value = this[s1.trim()]
+            return value ? value : eval(s1)
+        })
+    }
+
+    const vm = new MeuVue({
+        el:'#app',
+        data: {
+            nome:"Henrique"
+        }
+
+    })
+
+</script>
