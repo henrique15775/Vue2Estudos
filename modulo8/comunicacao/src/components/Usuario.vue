@@ -3,11 +3,12 @@
         <h1>Componente Usuário</h1>
         <p>Esse é um componente muito legal!</p>
         <p>Nome -> {{ nome }}</p>
+        <p>Idade -> {{ idade }}
         <hr>
         
         <div class="componentes">
-            <app-usuario-info :nome="nome" @nomeMudou="nome = $event" />
-            <app-usuario-editar />
+            <app-usuario-info :nome="nome" @nomeMudou="nome = $event" :reiniciarFn="reiniciarNome" :idade="idade" />
+            <app-usuario-editar :idade="idade" @idadeMudou="idade = $event" />
         </div>
     </div>
 </template>
@@ -23,9 +24,18 @@ async created() {
     this.totalVuePackages = data.total
   },data(){
         return {
-            nome: ""
+            nome: "",
+            idade: 0
         }
     },
+    methods:{
+        
+            reiniciarNome(){
+                this.nome = "Pedro"
+            }
+
+        
+    } ,
     components: { AppUsuarioInfo, AppUsuarioEditar }
 }
 </script>
