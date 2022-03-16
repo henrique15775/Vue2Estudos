@@ -5,10 +5,15 @@
         <button @click="alterarNome()"> Alterar Nome </button>
         <button @click="reiniciarFn()"> Reiniciar (Callback) </button>
         <p>Nome do usuário: {{ nome }}</p>
+        <p>Idade> {{ idade }} </p>
     </div>
 </template>
 
 <script>
+
+import barramento from '../barramento'
+
+
 export default {
     props:{
         nome: [String, Array],
@@ -25,6 +30,11 @@ export default {
           //  this.nome = "Ativou metodo de comunicação callback"
             this.$emit('nomeMudou','josuoe')
         }*/
+    },
+    created(){
+        barramento.quandoIdadeMudar(idade => {
+            this.idade = idade
+        })
     }
 }
 </script>
