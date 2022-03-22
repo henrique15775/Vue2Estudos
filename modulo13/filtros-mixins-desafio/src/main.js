@@ -10,6 +10,7 @@ Vue.filter('tamanhoPalavra',(msg)=>{
 	}
 	
 	return mod_str.join(' ')
+	//funfou
 })
 
 new Vue({
